@@ -1,0 +1,19 @@
+<div>
+
+    <form id="formProduto" #myform="ngForm" (ngSubmit)="onSubmit()">
+
+      <fieldset draggable="true">
+       <legend>Novo:</legend>
+       <label for="nome">Nome do Produto:</label>
+       <input type="text" id="nome" name="nome" [(ngModel)]="produto.nomeProduto" required #nomeProduto="ngModel"><br><br>
+       <label for="descricao">Descrição Simples:</label>
+       <input type="text" id="descricao" name="descricao"><br><br>
+       <label for="mercado">Mercado Alvo:</label>
+       <input type="text" id="mercado" name="mercado"><br><br>
+       <label for="tecnologias">Tecnologias:</label>
+       <input type="text" id="tecnologias" name="tecnologias"><br><br>
+  
+       <input type="submit" value="Submit">
+       <button type="button" (click)="navegate(['/produtos'])">Cancelar</button>
+      </fieldset>
+     </form>

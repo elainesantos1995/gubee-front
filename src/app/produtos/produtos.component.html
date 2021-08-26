@@ -1,0 +1,48 @@
+<div> 
+
+  <a href="cadastro">Novo</a>
+
+  <br>
+  <br>
+  
+  <div style="width: 100%;">
+    <form>
+    <fieldset draggable="true">
+      <legend>Novo:</legend>
+      <label for="mercado">Mercado Alvo:</label><br>
+      <input type="text" id="mercado" name="mercado" ><br>
+      <label for="tecnologias">Tecnologias:</label><br>
+      <input type="text" id="tecnologias" name="tecnologias" value="" placeholder="Digite a tecnologias separadas por vírgula"><br><br>
+      <input type="submit" value="Submit">
+      <button>Filtrar</button>
+    </fieldset>
+  </form> 
+
+  <div>
+      <table id="produtos">
+        <thead >
+          <tr>
+            <th colspan="4">Produtos de Software</th>
+          </tr>
+        </thead>
+        <thead class="thead-light">
+          <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Mercado Alvo</th>
+            <th>Tecnologias</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of produtos">
+            <th>{{ p.nomeProduto }}</th>
+            <th>{{ p.descricaoSimples }}</th>
+            <th>{{ p.mercadoAlvo }}</th>
+            <th>
+              <button type="button" (click)="navegate(['/cadastro'+ p.id])">Editar</button>
+              <button type="button" (click)="deletar(p.id)">Deletar</button>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+  </div>
