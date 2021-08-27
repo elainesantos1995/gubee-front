@@ -13,17 +13,16 @@ export class ProdutosComponent implements OnInit {
   id: number;
   produto: Produto;
   produtos: Produto[];
-  tecnologias: String[];
-  tecnologiasSelecionadas: String[];
-  nome: string;
+  tecnologias: string;  
+  mercadoAlvo: string;
 
   constructor(
     private produtoService: ProdutoService,
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-    this.buscarTodos();    
+  ngOnInit(): void {  
+    this.buscarTodosFilter();
   }  
 
   navegate(url: string[]): any{
@@ -37,12 +36,24 @@ export class ProdutosComponent implements OnInit {
    });
   }
 
+  buscarTodosFilter(){
+    this.produtoService.filtrar(this.tecnologias, this.mercadoAlvo).subscribe((produtos: Produto[]) => {
+     this.produtos = produtos;
+     console.log(produtos)
+   });
+  }
+
   deletar(id: number){
     this.produtoService.deletar(id)
       .subscribe(response => {  
         location.reload();
         return false;      
       });
+  }
+
+  limpar(){
+    this.mercadoAlvo = "";
+    this.tecnologias = "";    
   }
   
 }

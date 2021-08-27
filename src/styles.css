@@ -1,8 +1,23 @@
-
-.button {
-    padding-left: 90px; 
-  }
   
   button {
     margin-left: .5em;
+    width: auto;
+    border-color: lightgray;
+    border-radius: 5px;
+    width: 5em;
+    height: 2em;
+  }
+
+  fieldset {
+    border-style: outset;
+    border-color: lightgray;
+    border-radius: 5px;
+  }
+
+  input{
+    border-style: outset;
+    border-color: lightgray;
+    border-radius: 5px;
+    width: 20em;
+    height: 2em;
   }

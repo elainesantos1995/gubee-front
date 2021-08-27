@@ -30,7 +30,7 @@ export class ProdutoService{
   }
 
   buscarPorId(id: number): Observable<Produto>{
-    return this.http.get<Produto>(this.url+`${id}`);
+    return this.http.get<Produto>(this.url+`/${id}`);
   }
 
   buscarTodos(): Observable<Produto[]>{
@@ -42,6 +42,13 @@ export class ProdutoService{
 
   deletar(id : number): Observable<any>{
     return this.http.delete<any>(this.url+`/${id}`);
+  }
+
+  filtrar(tecnologias: string, mercadoAlvo: string): Observable<Produto[]>{
+    return this.http.get<Produto[]>(this.url+`/filter/${tecnologias}`+`/${mercadoAlvo}`)
+    .pipe(
+      retry(2),
+      catchError(this.handleError))
   }
 
     handleError(error: HttpErrorResponse) {
