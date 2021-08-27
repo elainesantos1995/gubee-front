@@ -44,8 +44,29 @@ export class ProdutoService{
     return this.http.delete<any>(this.url+`/${id}`);
   }
 
-  filtrar(tecnologias: string, mercadoAlvo: string): Observable<Produto[]>{
-    return this.http.get<Produto[]>(this.url+`/filter/${tecnologias}`+`/${mercadoAlvo}`)
+  filtrar(tecnologias: any, mercadoAlvo: any): Observable<Produto[]>{
+    console.log(tecnologias + "/" + mercadoAlvo)
+
+    // if(tecnologias === ""){
+    //   this.url += `?mercadoAlvo=${mercadoAlvo}`;
+    // }else if(mercadoAlvo === ""){
+    //   this.url += `?tecnologias=${tecnologias}`;
+    // }else if(tecnologias !== "" && mercadoAlvo !== ""){
+    //   this.url+`?tecnologias=${tecnologias}`+`&mercadoAlvo=${mercadoAlvo}`
+    // }else{
+    //   this.url += "";
+    // }
+
+     if(tecnologias == undefined){
+      this.url += `/filter?mercadoAlvo=${mercadoAlvo}`;
+    }else if(mercadoAlvo == undefined){
+      this.url += `/filter?tecnologias=${tecnologias}`;
+    }else if(tecnologias != undefined && mercadoAlvo != undefined){
+      this.url += `/filter?tecnologias=${tecnologias}`+`&mercadoAlvo=${mercadoAlvo}`
+    }
+    
+    console.log(this.url)
+    return this.http.get<Produto[]>(this.url)
     .pipe(
       retry(2),
       catchError(this.handleError))

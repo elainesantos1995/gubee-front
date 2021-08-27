@@ -22,7 +22,7 @@ export class ProdutosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {  
-    this.buscarTodosFilter();
+    this.buscarTodos();
   }  
 
   navegate(url: string[]): any{
@@ -53,7 +53,9 @@ export class ProdutosComponent implements OnInit {
 
   limpar(){
     this.mercadoAlvo = "";
-    this.tecnologias = "";    
+    this.tecnologias = "";
+    //this.buscarTodos();  
+    location.reload();
   }
   
 }

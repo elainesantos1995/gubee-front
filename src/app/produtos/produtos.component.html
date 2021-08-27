@@ -1,6 +1,6 @@
 <div  style="margin-left: 15%; margin-right: 15%;"> 
 
-  <a href="cadastro">Novo</a>
+  <!-- <a href="cadastro">Novo</a> -->
 
   <br>
   <br>
@@ -12,11 +12,11 @@
       <label for="mercado">Mercado Alvo:</label><br>
       <input type="text" id="mercado" name="mercado" [(ngModel)]="mercadoAlvo"><br>
       <label for="tecno">Tecnologias:</label><br>
-      <input type="text" id="tecno" name="tecnologias" [(ngModel)]="tecnologias" #tec="ngModel"
+      <input type="text" id="tecno" name="tecnologias" [(ngModel)]="tecnologias"
         placeholder="Digite as tecnologias separadas por vírgula"><br><br>
       
       <button type="button" (click)="limpar()">Limpar</button>
-      <button type="button" (click)="buscarTodosFilter()">Filtrar</button>
+      <button type="button" (click)="buscarTodosFilter()">Buscar</button>
     </fieldset>
   
 </div>
